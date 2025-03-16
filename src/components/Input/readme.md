@@ -9,14 +9,6 @@ The `Input` component is a customizable text input field designed for React Nati
 - Secure text entry for password fields.
 - Handles error states with customizable error border color.
 
-## Installation
-
-To install the `Input` component, you can include it as part of your `@alpha-mo/basically` library or copy the component directly into your project.
-
-```bash
-npm install @alpha-mo/basically
-```
-
 ## Usage
 
 ```tsx
@@ -105,7 +97,7 @@ You can override these styles using the `style`, `inputStyle`, and `placeholderS
 
 ## License
 
-MIT License. See [LICENSE](https://github.com/alpha-mo/basic-react-native-ui-library/blob/main/LICENSE) for details.
+MIT License. See [LICENSE](../../../License) for details.
 ```
 
 I’ve provided an overview of the component, its usage, and the available props. Let me know if you'd like any changes or additional details!
