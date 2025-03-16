@@ -96,7 +96,7 @@ Example:
 
 ## License
 
-MIT License. See [LICENSE](https://github.com/alpha-mo/basic-react-native-ui-library/blob/main/LICENSE) for details.
+MIT License. See [LICENSE](../../../License) for details.
 ```
 
 This README provides an overview of the `Button` component, detailed props, example usage, and styling options. Let me know if you'd like to make any changes!
