@@ -8,14 +8,6 @@ The `ThemeSwitcher` component allows users to toggle between light and dark them
 - Supports external callbacks on theme change.
 - Lightweight and easy-to-use component.
 
-## Installation
-
-To install the `ThemeSwitcher` component, you can include it as part of your `@alpha-mo/basically` library or copy the component directly into your project.
-
-```bash
-npm install @alpha-mo/basically
-```
-
 ## Usage
 
 ```tsx
@@ -111,7 +103,7 @@ The component comes with default styles for the container, button, and icon. You
 
 ## License
 
-MIT License. See [LICENSE](https://github.com/alpha-mo/basic-react-native-ui-library/blob/main/LICENSE) for details.
+MIT License. See [LICENSE](../../../License) for details.
 ```
 
 This README provides an overview of the component, detailed props, and usage examples. Let me know if you'd like any adjustments!
