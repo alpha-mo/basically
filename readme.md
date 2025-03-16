@@ -1,6 +1,6 @@
 # @alpha-mo/basically
 
-`@alpha-mo/basically` is a simple, basic UI component library for React Native, designed to streamline the development of mobile applications by providing reusable components with minimal configuration.
+`@alpha-mo/basically` is a simple, basic UI component library for ***React Native***, designed to streamline the development of mobile applications by providing reusable components with minimal configuration.
 
 ## Installation
 
