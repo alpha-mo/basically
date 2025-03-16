@@ -38,6 +38,6 @@ An image viewer with support for pinch-to-zoom, pan gestures, double-tap zoom, a
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./License) file for details.
 
 ---
