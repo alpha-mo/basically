@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "declaration": true,
+        "declarationMap": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "target": "ESNext",
+        "jsx": "react-native",
+        "strict": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src",
+        "index.ts"
+    ]
+}
