@@ -95,5 +95,4 @@ Now, when `handleView` is called, it will push to the `/modal` screen, passing t
 | `resizeMode` | `ImagePropsBase['resizeMode']` | Resize mode (e.g., `contain`, `cover`) |
 
 ## License
-
-MIT
+MIT License. See [LICENSE](../../../License) for details.
