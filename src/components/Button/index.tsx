@@ -1,6 +1,7 @@
-import React, { FC, useMemo } from 'react';
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { BtnProps } from './type';
+import { FC } from 'react'
+import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
+import { BtnProps, preset } from './config'
+
 /**
  * #### Props:
  ```tsx
@@ -8,63 +9,42 @@ import { BtnProps } from './type';
  * - style?: ViewStyle
  * - textStyle?: TextStyle
  * - text: string
- * - textColor?: ColorValue | undefined
- * - bgColor?: ColorValue | undefined
+ * - loadingColor?: ColorValue | undefined
  * - disabled?: boolean
  * - disabledStyle?: {
         backgroundColor?: ColorValue | undefined
         color?: ColorValue | undefined
     }
  * - onPress?: TouchableOpacityProps['onPress']
- * - children?: React.ReactNode | undefined
+ * - children?: ReactNode | undefined
  ```
  */
 export const Button: FC<BtnProps> = ({
-    loading = false, text, bgColor = '#005364',
-    textColor = 'white', style, textStyle,
+    loading = false, text,
+    style, textStyle, loadingColor,
     disabled = false, disabledStyle, onPress, children
 }) => {
-    const buttonStyle = useMemo(() => ({
-        backgroundColor: (disabled || loading) ? disabledStyle?.backgroundColor ?? bgColor : bgColor
-    }), [disabled, loading, disabledStyle, bgColor]);
 
     return (
         <TouchableOpacity
             activeOpacity={disabled || loading ? 1 : 0.5}
             disabled={disabled || loading}
             onPress={onPress}
+            style={[
+                preset.style, style,
+                (disabled || loading) && { backgroundColor: disabledStyle?.backgroundColor || preset.disabledStyle?.backgroundColor }
+            ]}
         >
-            <View style={[styles.button, style, buttonStyle]}>
-                {loading
-                    ? (<ActivityIndicator size="small" color={textColor} />)
-                    : children ??
-                    <Text style={[
-                        styles.text,
-                        textStyle,
-                        { color: (disabled || loading) ? disabledStyle?.color ?? textColor : textColor }
-                    ]}>
-                        {text}
-                    </Text>
-                }
-            </View>
+            {loading
+                ? (<ActivityIndicator size="small" color={loadingColor} />)
+                : children ??
+                <Text style={[
+                    preset.textStyle, textStyle,
+                    disabled && { color: disabledStyle?.color || preset.disabledStyle?.color }
+                ]}>
+                    {text}
+                </Text>
+            }
         </TouchableOpacity>
-    );
-};
-
-const styles = StyleSheet.create({
-    button: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10,
-        borderRadius: 4,
-        marginVertical: 5
-    },
-    text: {
-        color: 'white',
-        fontWeight: '700',
-        fontSize: 14,
-        flexWrap: 'wrap',
-        textAlign: 'center'
-    }
-});
+    )
+}
