@@ -1,4 +1,5 @@
-import { ColorValue, TextInputProps, TextStyle, ViewStyle } from "react-native";
+//type.ts
+import { ColorValue, ReturnKeyTypeOptions, TextInputProps, TextStyle, ViewStyle } from "react-native";
 
 export interface InputProps {
     style?: Pick<ViewStyle,
@@ -16,6 +17,8 @@ export interface InputProps {
     >
     rtl?: boolean // right to left
     keyboardType?: TextInputProps['keyboardType']
+    returnKeyType?: ReturnKeyTypeOptions
+    returnKeyLabel?: string | undefined
     onSubmit?: TextInputProps['onSubmitEditing']
     secure?: TextInputProps['secureTextEntry']
     error?: boolean
@@ -24,4 +27,5 @@ export interface InputProps {
 
 export interface InputRef {
     getValue: () => string;
+    focus: () => void
 }

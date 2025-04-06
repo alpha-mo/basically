@@ -1,103 +1,150 @@
-# Input Component
+# `Input` Component
 
-The `Input` component is a customizable text input field designed for React Native. It supports animated placeholder behavior, custom styles, error handling, and more.
+An animated, floating-label input component for React Native with RTL support, error highlighting, and full customization for layout and styling.
 
-## Features
-- Animated placeholder with focus and blur behavior.
-- Customizable styles for the input, placeholder, and error states.
-- Support for RTL (Right-to-Left) text direction.
-- Secure text entry for password fields.
-- Handles error states with customizable error border color.
+## ✨ Features
 
-## Usage
+- 🎯 Animated placeholder transition on focus/blur
+- 🔒 Secure text entry support
+- 🔤 Custom keyboard types and return key behavior
+- ❌ Error state with custom border color
+- 🔁 RTL (right-to-left) layout support
+- 🧠 Imperative methods: `getValue()` and `focus()`
 
-```tsx
-import React, { useRef } from 'react';
-import { Input } from '@alpha-mo/basically';
+---
 
-const MyComponent = () => {
-  const inputRef = useRef<InputRef>(null);
-
-  const handleSubmit = () => {
-    const value = inputRef.current?.getValue();
-    console.log(value);
-  };
-
-  return (
-    <Input
-      ref={inputRef}
-      placeholder="Enter text"
-      secure={false}
-      error={false}
-      keyboardType="default"
-      onSubmit={handleSubmit}
-    />
-  );
-};
-```
-
-## Props
-
-### `InputProps`
-
-| Name               | Type                                   | Default Value     | Description                                                                                       |
-|--------------------|----------------------------------------|-------------------|---------------------------------------------------------------------------------------------------|
-| `style`            | `ViewStyle`                            | -                 | Custom styles for the input container (e.g., margin, height, etc.).                               |
-| `placeholderStyle` | `TextStyle`                            | -                 | Custom styles for the placeholder text (e.g., font size, color).                                 |
-| `placeholder`      | `string`                               | `"placeholder"`   | Text to display as the placeholder.                                                                |
-| `inputStyle`       | `TextStyle`                            | -                 | Custom styles for the input field (e.g., font size, color).                                       |
-| `rtl`              | `boolean`                              | `false`           | Determines if the input should support RTL text direction.                                        |
-| `keyboardType`     | `TextInputProps['keyboardType']`       | `"default"`       | Defines the type of keyboard to display.                                                         |
-| `onSubmit`         | `TextInputProps['onSubmitEditing']`    | -                 | Callback function to call when submitting the input.                                              |
-| `secure`           | `TextInputProps['secureTextEntry']`    | `false`           | Determines if the input is a secure text entry (password).                                        |
-| `error`            | `boolean`                              | `false`           | Determines if the input should display an error state.                                            |
-| `errorBorderColor` | `ColorValue`                           | `#e25a29`         | Custom border color for the input when in an error state.                                         |
-
-### `InputRef`
-
-- `getValue`: A method to get the current value of the input.
-
-## Example
-
-Here is an example usage of the `Input` component:
+## 🔧 Usage
 
 ```tsx
-import React, { useRef } from 'react';
-import { Input } from '@alpha-mo/basically';
+import { Input } from '@alpha-mo/basically'
+import { useRef } from 'react'
 
-const LoginScreen = () => {
-  const inputRef = useRef<InputRef>(null);
+const inputRef = useRef<InputRef>(null)
 
-  const handleSubmit = () => {
-    const value = inputRef.current?.getValue();
-    console.log('Input Value:', value);
-  };
-
-  return (
-    <Input
-      ref={inputRef}
-      placeholder="Username"
-      error={false}
-      keyboardType="default"
-      onSubmit={handleSubmit}
-    />
-  );
-};
+<Input
+  ref={inputRef}
+  placeholder="Email"
+  keyboardType="email-address"
+  onSubmit={() => console.log(inputRef.current?.getValue())}
+  error={false}
+/>
 ```
 
-## Styles
+---
 
-The component comes with the following default styles:
+## ⚙️ Props
 
-- `container`: Styles for the container of the input field.
-- `placeholder`: Styles for the placeholder text (positioned above the input).
-- `input`: Styles for the input field (background color, border, padding).
+| Prop               | Type                       | Description                                                                 |
+|--------------------|----------------------------|-----------------------------------------------------------------------------|
+| `placeholder`       | `string`                   | The placeholder text displayed above the input.                            |
+| `style`             | `Partial<ViewStyle>`       | Container styling — accepts margin, height, width, and transform props.    |
+| `placeholderStyle`  | `Partial<TextStyle>`       | Style for the animated floating placeholder.                               |
+| `inputStyle`        | `Partial<TextStyle>`       | Custom style for the `TextInput`.                                          |
+| `rtl`               | `boolean`                  | Aligns placeholder to the right if `true`.                                 |
+| `keyboardType`      | `TextInputProps['keyboardType']` | Type of keyboard to display.                                         |
+| `returnKeyType`     | `ReturnKeyTypeOptions`     | Type of return key on the keyboard.                                        |
+| `returnKeyLabel`    | `string`                   | Label for the return key.                                                  |
+| `onSubmit`          | `TextInputProps['onSubmitEditing']` | Called when the return key is pressed.                             |
+| `secure`            | `boolean`                  | Masks input for passwords.                                                 |
+| `error`             | `boolean`                  | Highlights the input border on error.                                      |
+| `errorBorderColor`  | `ColorValue`               | Custom color for the error border.                                         |
 
-You can override these styles using the `style`, `inputStyle`, and `placeholderStyle` props.
+---
 
-## License
+## 📟 Refs
 
-MIT License. See [LICENSE](../../../License) for details.
+The component supports imperative methods via `forwardRef`.
+
+| Method      | Return Type | Description                         |
+|-------------|-------------|-------------------------------------|
+| `getValue()`| `string`     | Returns the current input value.   |
+| `focus()`   | `void`       | Focuses the input programmatically. |
+
+---
+
+## 🎨 Default Styles
+
+### Container
+
+```ts
+{
+  position: 'relative',
+  borderRadius: 4,
+  justifyContent: 'center',
+  overflow: 'visible',
+}
 ```
 
-I’ve provided an overview of the component, its usage, and the available props. Let me know if you'd like any changes or additional details!
+### Input
+
+```ts
+{
+  backgroundColor: '#fef8f0',
+  borderWidth: 2,
+  borderRadius: 4,
+  paddingVertical: 10,
+  paddingHorizontal: 10,
+  fontSize: 16,
+  borderColor: '#a999b8'
+}
+```
+
+### Placeholder
+
+```ts
+{
+  backgroundColor: '#fef8f0',
+  position: 'absolute',
+  paddingHorizontal: 8,
+  paddingVertical: 2,
+  borderRadius: 4,
+  fontSize: 12,
+  color: '#3c008b',
+  fontWeight: '700'
+}
+```
+
+---
+
+## 🧪 Example
+
+```tsx
+<Input
+  placeholder="Password"
+  secure
+  error={hasError}
+  errorBorderColor="#ff4d4f"
+  rtl={false}
+  returnKeyType="done"
+  onSubmit={() => console.log("Submitted")}
+/>
+```
+
+---
+
+## 🧠 Tip
+
+Use `getValue()` and `focus()` via ref for forms or input validation flows!
+
+```tsx
+  const inputRef = useRef<InputRef>(null)
+
+  useEffect(()=>{
+    if(inputRef1.current) {
+      inputRef1.current.focus()
+      console.log(inputRef1.current.getValue());
+    }
+  },[inputRef1])
+  ________
+
+  <Input
+    style={styles.input}
+    ref={inputRef}
+    placeholder={'hgghh'}
+    returnKeyType="next"
+    returnKeyLabel="Next"
+    onSubmit={handleFirstSubmit}
+  />
+  ```
+
+---

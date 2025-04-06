@@ -1,3 +1,4 @@
+//index.tsx
 import React, { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { TextInput, View, Animated, LayoutChangeEvent } from 'react-native';
 import { InputProps, InputRef } from './type';
@@ -31,8 +32,8 @@ import { styles } from './style';
  * ```
  */
 export const Input = forwardRef<InputRef, InputProps>(({
-    placeholder, rtl, secure, error, style, inputStyle,
-    keyboardType, placeholderStyle, onSubmit, errorBorderColor
+    placeholder, rtl, secure, error, style, inputStyle, returnKeyLabel,
+    keyboardType, placeholderStyle, onSubmit, errorBorderColor, returnKeyType
 }, ref) => {
     const [marginTop, setMarginTop] = useState(4);
     const [value, setValue] = useState('');
@@ -43,6 +44,7 @@ export const Input = forwardRef<InputRef, InputProps>(({
 
     useImperativeHandle(ref, () => ({
         getValue: () => value,
+        focus: () => inputRef.current?.focus()
     }));
 
     function handleTextChange(text: string): void {
@@ -99,6 +101,8 @@ export const Input = forwardRef<InputRef, InputProps>(({
                 secureTextEntry={secure}
                 keyboardType={keyboardType}
                 onSubmitEditing={onSubmit}
+                returnKeyType={returnKeyType}
+                returnKeyLabel={returnKeyLabel}
             />
             <Animated.Text
                 onLayout={onPlaceholderLayout}
