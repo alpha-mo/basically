@@ -1,102 +1,103 @@
-# Button Component
+# `Button` Component
 
-The `Button` component is a customizable button for React Native, designed to handle loading states, text, background color, and custom styles. It is built with flexibility in mind, allowing you to easily configure its appearance and behavior.
+A customizable and reusable button component built with React Native. It supports loading states, disabled states, custom styling, and more.
 
-## Features
-- Supports loading indicator while performing actions.
-- Customizable background color, text color, and styles.
-- Easily handles button disable state with customized styles.
-- Can contain text or custom children elements.
+## ✨ Features
 
-## Usage
+- ✅ Customizable text and styles
+- ⏳ Built-in loading indicator
+- 🚫 Disabled state support with overrideable styles
+- 👶 Fallback to `Text` if no children are provided
+- 💅 Styled with sensible presets out of the box
 
-```tsx
-import React, { useState } from 'react';
-import { Button } from '@alpha-mo/basically';
+---
 
-const MyComponent = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handlePress = () => {
-    setLoading(true);
-    // Simulate a network request or long-running task
-    setTimeout(() => setLoading(false), 2000);
-  };
-
-  return (
-    <Button
-      text="Submit"
-      loading={loading}
-      onPress={handlePress}
-      bgColor="#005364"
-      textColor="#ffffff"
-    />
-  );
-};
-```
-
-## Props
-
-| Name             | Type                               | Default Value        | Description                                                                                   |
-|------------------|------------------------------------|----------------------|-----------------------------------------------------------------------------------------------|
-| `loading`        | `boolean`                          | `false`              | If `true`, shows a loading indicator instead of text.                                          |
-| `text`           | `string`                           | -                    | The text displayed on the button.                                                              |
-| `bgColor`        | `ColorValue`                       | `#005364`            | The background color of the button.                                                           |
-| `textColor`      | `ColorValue`                       | `white`              | The color of the text in the button.                                                           |
-| `style`          | `ViewStyle`                        | -                    | Additional styles to apply to the button container.                                            |
-| `textStyle`      | `TextStyle`                        | -                    | Additional styles to apply to the text.                                                        |
-| `disabled`       | `boolean`                          | `false`              | If `true`, the button will be disabled, and the `onPress` function will not be triggered.      |
-| `disabledStyle`  | `{ backgroundColor, color }`       | -                    | Custom styles for the disabled button, including `backgroundColor` and `color`.               |
-| `onPress`        | `() => void`                       | -                    | The callback function to be called when the button is pressed.                                |
-| `children`       | `ReactNode`                        | -                    | Optionally, custom children elements inside the button.                                        |
-
-## Example
-
-Here’s an example of how to use the `Button` component:
+## 🔧 Usage
 
 ```tsx
-import React, { useState } from 'react';
-import { Button } from '@alpha-mo/basically';
+import { Button } from '@alpha-mo/basically'
 
-const MyComponent = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handlePress = () => {
-    setLoading(true);
-    // Simulate a network request or long-running task
-    setTimeout(() => setLoading(false), 2000);
-  };
-
-  return (
-    <Button
-      text="Submit"
-      loading={loading}
-      onPress={handlePress}
-      bgColor="#005364"
-      textColor="#ffffff"
-      disabled={loading}
-    />
-  );
-};
-```
-
-## Styling
-
-You can apply custom styles to the button container using the `style` prop, and you can also customize the text styling with the `textStyle` prop.
-
-Example:
-
-```tsx
 <Button
-  text="Custom Styled Button"
-  style={{ borderRadius: 10, padding: 20 }}
-  textStyle={{ fontSize: 16, fontWeight: 'bold' }}
+  text="Submit"
+  onPress={() => console.log('Pressed')}
+  loading={false}
+  disabled={false}
 />
 ```
 
-## License
+---
 
-MIT License. See [LICENSE](../../../License) for details.
+## ⚙️ Props
+
+| Prop            | Type                                      | Description                                                                 |
+|-----------------|-------------------------------------------|-----------------------------------------------------------------------------|
+| `text`          | `string`                                  | The text displayed inside the button (used if `children` is not provided). |
+| `onPress`       | `TouchableOpacityProps['onPress']`        | Callback fired when the button is pressed.                                 |
+| `loading`       | `boolean`                                 | Displays a loading spinner if `true`.                                      |
+| `disabled`      | `boolean`                                 | Disables the button and applies `disabledStyle` if `true`.                 |
+| `children`      | `ReactNode`                               | Custom content to render inside the button instead of text.                |
+| `style`         | `StyleProp<ViewStyle>`                    | Overrides the container style.                                             |
+| `textStyle`     | `StyleProp<TextStyle>`                    | Overrides the text style.                                                  |
+| `loadingColor`  | `ColorValue`                              | Custom color for the loading spinner.                                      |
+| `disabledStyle` | `{ backgroundColor?: ColorValue; color?: ColorValue }` | Overrides background and text color when disabled.                        |
+
+---
+
+## 🎨 Default Styles
+
+### Container (`preset.style`)
+
+```ts
+{
+  width: '100%',
+  backgroundColor: '#420097',
+  padding: 15,
+  borderRadius: 8,
+  justifyContent: 'center',
+  alignItems: 'center',
+}
 ```
 
-This README provides an overview of the `Button` component, detailed props, example usage, and styling options. Let me know if you'd like to make any changes!
+### Text (`preset.textStyle`)
+
+```ts
+{
+  color: '#ededed',
+  fontSize: 18,
+  fontWeight: 'bold'
+}
+```
+
+### Disabled (`preset.disabledStyle`)
+
+```ts
+{
+  backgroundColor: '#919191',
+  color: '#dedede'
+}
+```
+
+---
+
+## 📌 Notes
+
+- If `children` is provided, it overrides the `text` prop.
+- The component uses `TouchableOpacity` from `react-native`.
+- `disabled` or `loading` makes the button non-pressable and applies appropriate styles.
+
+---
+
+## 🧪 Example
+
+```tsx
+<Button
+  text="Login"
+  loading={isSubmitting}
+  disabled={!isFormValid}
+  loadingColor="#fff"
+  disabledStyle={{ backgroundColor: '#ccc', color: '#888' }}
+  onPress={handleLogin}
+/>
+```
+
+---
