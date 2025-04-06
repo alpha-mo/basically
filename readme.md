@@ -36,6 +36,10 @@ A customizable theme switcher that toggles between light and dark modes with ani
 
 An image viewer with support for pinch-to-zoom, pan gestures, double-tap zoom, and a fling gesture to navigate back. Supports both local images and images from external URLs.
 
+### 5. [TabNavigation](./src/components/tabNavigation/readme.md)
+
+A customizable and animated bottom tab bar component for React Native apps using `@react-navigation/bottom-tabs` and `expo-router`. The `TabBar` supports dynamic icon styles, smooth focus animations, and a rich configuration via `tabButtonProps`.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./License) file for details.
