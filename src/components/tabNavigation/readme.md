@@ -43,7 +43,7 @@ import { TabBar, type TabNavigationOptions } from "@alpha-mo/basically";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {
-    const { theme } = useThemeStore()
+    
     return (
         <Tabs
             screenOptions={{
