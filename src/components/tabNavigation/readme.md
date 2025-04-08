@@ -34,50 +34,66 @@ npx expo install react-native-reanimated react-native-gesture-handler @expo/vect
 ## 🚀 Usage
 
 ```tsx
-import { TabBar } from './tabBar'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { TabBar, type TabNavigationOptions } from "@alpha-mo/basically";
+import { Tabs } from "expo-router";
 
-const Tab = createBottomTabNavigator()
-
-export const AppTabs = () => (
-  <Tab.Navigator tabBar={(props) => <TabBar {...props} useFocusedTabColor />}>
-    <Tab.Screen
-      name="home"
-      component={HomeScreen}
-      options={{
-        title: "Home",
-        tabButtonProps: {
-          textColor: "#009bcf",
-          font: {
-            size: 14,
-            lineHeight: 14,
-            style: {
-              fontWeight: '600',
-              textAlignVertical: 'center'
+export default function TabLayout() {
+    const { theme } = useThemeStore()
+    return (
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+            }}
+            tabBar={
+                (props) =>
+                    <TabBar
+                        {...props}
+                        useFocusedTabColor
+                        style={{
+                            borderTopWidth: 2,
+                            paddingBottom: 4
+                        }}
+                    />
             }
-          },
-          icon: {
-            base: "FontAwesome",
-            iconName: "home",
-            size: 24,
-            color: "#7a9da9",
-            focus: {
-              borderWidth: 1.25,
-              padding: 5,
-              color: "#009bcf",
-              style: {
-                backgroundColor: "#fff",
-                borderRadius: 18,
-                borderColor: "#009bcf"
-              }
-            }
-          }
-        }
-      }}
-    />
-    {/* Add more screens... */}
-  </Tab.Navigator>
-)
+        >
+            <Tabs.Screen
+                name="settings"
+                key={'settings'}
+                options={{
+                    title: 'Settings',
+                    tabButtonProps: {
+                        textColor: '#249602',
+                        font: {
+                            size: 14,
+                            lineHeight: 14,
+                            style: {
+                                fontFamily: choose your font,
+                                textAlignVertical: 'center'
+                            }
+                        },
+                        icon: {
+                            base: "Entypo",
+                            iconName: "grid",
+                            size: 24,
+                            color: "#7a9da9",
+                            focus: {
+                                borderWidth: 1.25,
+                                padding: 5,
+                                color: "#249602",
+                                style: {
+                                    backgroundColor: "#fff",
+                                    borderColor: "#249602",
+                                    borderTopLeftRadius: 12
+                                }
+                            }
+                        }
+                    }
+                } as TabNavigationOptions}
+            />
+            {/* Add more screens... */}
+        </Tabs>
+    )
+}
 ```
 
 ---
