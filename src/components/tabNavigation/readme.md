@@ -15,6 +15,11 @@ A customizable and animated bottom tab bar component for React Native apps using
 
 ---
 
+### 🖼️ Preview
+<img src="./preview.gif" height="120" />
+
+---
+
 ## 📦 Installation
 
 Make sure you have the following peer dependencies:
